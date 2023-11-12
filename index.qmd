@@ -1,0 +1,23 @@
+---
+title: "Nora Elhaissouni" 
+image: headshot.jpg 
+toc: false
+about: 
+  template: trestles
+  image-shape: round
+  image-width: 20em
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/nora-elhaissouni/
+    - icon: github
+      text: GitHub
+      href: https://github.com/nora-elhaissouni
+    - icon: envelope
+      text: Email
+      href: mailto:nelhais1@jh.edu
+---
+
+## Welcome
+
+Nora Elhaissouni graduated from Tufts University with her Bachelor of Science in May 2023. She is currently pursuing her ScM in Biostatistics at The Johns Hopkins Bloomberg School of Public Health. She is interested in applying data science and statistical methods towards infectious disease research. She enjoys learning different data cleaning and data management techniques. She hopes to gain more research or industry experience and is looking for a summer internship. During the summer, she hopes to progress her data analysis skills and gain exposure to more applied biostatistics so that she can narrow her future plans further.

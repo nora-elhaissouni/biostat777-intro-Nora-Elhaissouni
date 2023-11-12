@@ -1,0 +1,200 @@
+---
+title: "Example Analysis"
+image: penguin.jpg
+toc: false
+about: 
+  template: marquee
+  image-width: 10em
+format:
+  html:
+    code-fold: true
+    code-summary: "Show the code"
+    callout-appearance: simple
+bibliography: references.bib
+---
+
+```{r, include = FALSE}
+library(palmerpenguins)
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+library(gtsummary)
+```
+
+### About the Data
+
+The peguins dataset I am using comes from the palmerpenguins package, installed from CRAN using install.packages("palmerpenguins"). More specifically, Dr. Kirsten Morgan and the Palmer Station, Antarctica LTER, collected and released this data. The data collected is on three penguin species: Chinstrap, Gentoo, and Adelie. The dataset has information on the island the specific penguin is located on, specific body measurements, sex, and year [@Horst2020].
+
+Data dictionary is available [here](https://rpubs.com/rich_i/dd_pp).
+
+## Intended Audience
+
+The intended audience is someone who is interested in penguins potentially with a focus on penguin body size measurements. Knowing this information could lead to a better understanding of how certain body measurements of animals may impact their physical health and life expectancy. With this limited data, this is the preliminary step to more impactful research as I am analyzing trends related to penguin species, sex, and body size measurements. More information on the importance of the topic is available here [@Trivelpiece1987].
+
+## Questions
+
+How does body mass vary between sex for the Chinstrap and Adelie species? For each of these two species and their sex, what is the relationship between bill length and body mass? What is the relationship between flipper length and body mass?
+
+### Count Analysis: The Data
+
+```{r}
+# Filter the data to remove the NA values, and only have the Chinstrap and Adelie species. Next, only select the columns needed for the analysis
+penguins_filtered<- penguins %>% filter(species %in% c("Chinstrap", "Adelie")) %>% na.omit() %>% select(species, sex, body_mass_g, bill_length_mm, flipper_length_mm)
+penguins_filtered
+
+
+```
+
+## Graphical Analysis
+
+[![Penguins](palmpeng.jpg)](https://allisonhorst.github.io/palmerpenguins/)
+
+Data analysis techniques used from [@GrolemundWickham2017]
+
+```{r}
+#| label: table-1
+#| table-cap: Table Summary
+#| column: margin
+#| warning: false
+
+summary_table <- penguins_filtered %>%
+  tbl_summary(
+    by = species,
+    missing = "no",
+    statistic = list(all_continuous() ~ "{mean}", 
+                     all_categorical() ~ "{n}"),
+    label = list(flipper_length_mm ~ "Flipper Length (mm)", bill_length_mm ~"Bill Length (mm)", body_mass_g ~ "Body Mass (g)")
+  )
+summary_table
+```
+
+### Species and Sex Distribution
+
+```{r}
+#| label: fig-1
+#| fig-cap: Count of species by sex
+#| warning: false
+# First GGplot will show generale count between the species for eachs sex
+penguins_filtered %>%
+  group_by(species, sex) %>%
+  summarise(count = n()) %>%
+  ggplot(aes(x = species, y = count, fill = sex)) +
+  geom_bar(stat = "identity", position = "dodge") +
+  labs(title = "Count of Penguins by Species and Sex", y = "Count", subtitle = "Even amount of male and female penguins within each species",
+    caption = "preliminary analysis",) +
+  theme_minimal()
+
+```
+
+::: callout-note
+This graph shows that there is an even proportion of males and females within each species, this initial observation allows us to now compare the size measures for males and females for each species.
+:::
+
+```{r}
+#| label: fig-2
+#| fig-cap: "Boxplot: Body Mass variation by species and sex"
+#| warning: false
+penguins_filtered %>%
+  ggplot(aes(x = species, y = body_mass_g, color = sex)) +
+  geom_boxplot() +
+  labs(
+    title = "Body Mass Variation by Species and Sex",
+    y = "Body Mass (g)",
+    x = "Species",
+    subtitle = "Body mass is fairly similary between the two species",
+    caption = "Males consistently have a greater body mass than females",
+  ) +
+  theme_minimal()
+
+```
+
+### What is the relationship between flipper length and body mass?
+
+```{r}
+#| label: fig-3
+#| fig-cap: "Scatterplot: Flipper Length and Body Mass"
+#| warning: false
+ggplot(penguins_filtered, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_grid(species ~ sex) +
+  labs(
+    title = "Flipper Length vs. Body Mass by Species and Sex",
+    x = "Flipper Length (mm)",
+    y = "Body Mass (g)",
+    subtitle = "As flipper length increases, body mass increases",
+    caption = "positive linear relationship"
+  ) +
+  theme_minimal()
+
+```
+
+### What is the relationship between bill length and body mass?
+
+```{r}
+#| label: fig-4
+#| fig-cap: "Scatterplot: Bill Length and Body Mass"
+#| warning: false
+ggplot(penguins_filtered, aes(x = bill_length_mm, y = body_mass_g)) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  facet_grid(species ~ sex) +
+  labs(
+    title = "Bill Length vs. Body Mass by Species and Sex",
+    x = "Bill Length (mm)",
+    y = "Body Mass (g)",
+    subtitle = "As bill length increases, body mass increases",
+    caption = "weaker correlation compared to flipper length with body mass"
+  ) +
+  theme_minimal()
+```
+
+::: callout-note
+Bill length scatter plot is more clumped together than the flipper length scatterplot. Visually, flipper length seems to have more of a positive linear relationship with body mass. Correlation values split by sex and species are calculated below.
+:::
+### Calculating Correlation of Body Mass and Bill length, By Species, and By Sex
+
+```{r}
+# Calculate correlation for bill length and body mass by species
+bill_cor_by_species <- by(penguins_filtered, penguins_filtered$species, function(subset) {
+  cor(subset$bill_length_mm, subset$body_mass_g)
+})
+print(bill_cor_by_species)
+
+# Calculate correlation for bill length and body mass by sex
+bill_cor_by_sex <- by(penguins_filtered, penguins_filtered$sex, function(subset) {
+  cor(subset$bill_length_mm, subset$body_mass_g)
+})
+print(bill_cor_by_sex)
+
+```
+
+### Calculate Correlation of Body Mass and Flipper length, By Species, and By Sex
+
+```{r}
+# Calculate correlation for flipper length and body mass by species
+flip_cor_by_species <- by(penguins_filtered, penguins_filtered$species, function(subset) {
+  cor(subset$flipper_length_mm, subset$body_mass_g)
+})
+print(flip_cor_by_species)
+
+# Calculate correlation for flipper length and body mass by sex
+flip_cor_by_sex <- by(penguins_filtered, penguins_filtered$sex, function(subset) {
+  cor(subset$flipper_length_mm, subset$body_mass_g)
+})
+print(flip_cor_by_sex)
+```
+
+### Summary
+
+Looking at the tables and figures provides a visual way of understanding and answering the questions. The first table summary and figure provide general information on the counts of each species and the averages, by species, for the body size measurements we are interested in. With this preliminary analysis, we are able to proceed to create graphs that show the general distribution of body mass for each species separated by sex. This box plot showed that Adelie and Chinstrap penguins tend to have similar body masses; however, Chinstrap females tend to have higher body mass then Adelie females. The last two figures are scatter plots that are split between gender and species to show relationships between flipper length and body mass, then bill length and body mass. These scatter plots both show that generally there is a positive correlation between flipper length and bill length with body mass. In addition to data visualizations, the correlation values were calculated. There is a positive and moderately strong positive correlation between bill length and body mass for the Adelie and chinstrap species. When separating by sex, females have a positive correlation between bill length and body mass, while males have a weak negative correlation. For flipper length and body mass, splitting by species shows a moderately strong positive correlation for both species, while splitting by species shows a positive correlation (although less strong) for both genders.
+
+### Functions Used
+
+dplyr: group_by, filter, select, n(), summarise
+
+tidyr: %>%  
+
+ggplot: geom_bar, geom_boxplot, geom_point, geom_smooth, facet_grid
+
+### References
