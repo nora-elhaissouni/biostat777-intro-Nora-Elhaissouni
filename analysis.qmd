@@ -1,10 +1,5 @@
 ---
 title: "Example Analysis"
-image: penguin.jpg
-toc: false
-about: 
-  template: marquee
-  image-width: 10em
 format:
   html:
     code-fold: true
@@ -144,7 +139,7 @@ ggplot(penguins_filtered, aes(x = bill_length_mm, y = body_mass_g)) +
     x = "Bill Length (mm)",
     y = "Body Mass (g)",
     subtitle = "As bill length increases, body mass increases",
-    caption = "weaker correlation compared to flipper length with body mass"
+    caption = "positive linear relationship"
   ) +
   theme_minimal()
 ```
@@ -187,7 +182,13 @@ print(flip_cor_by_sex)
 
 ### Summary
 
-Looking at the tables and figures provides a visual way of understanding and answering the questions. The first table summary and figure provide general information on the counts of each species and the averages, by species, for the body size measurements we are interested in. With this preliminary analysis, we are able to proceed to create graphs that show the general distribution of body mass for each species separated by sex. This box plot showed that Adelie and Chinstrap penguins tend to have similar body masses; however, Chinstrap females tend to have higher body mass then Adelie females. The last two figures are scatter plots that are split between gender and species to show relationships between flipper length and body mass, then bill length and body mass. These scatter plots both show that generally there is a positive correlation between flipper length and bill length with body mass. In addition to data visualizations, the correlation values were calculated. There is a positive and moderately strong positive correlation between bill length and body mass for the Adelie and chinstrap species. When separating by sex, females have a positive correlation between bill length and body mass, while males have a weak negative correlation. For flipper length and body mass, splitting by species shows a moderately strong positive correlation for both species, while splitting by species shows a positive correlation (although less strong) for both genders.
+Looking at the tables and figures provides a visual way of understanding and answering the questions. The first table summary and figure provide general information on the counts of each species and the averages, by species, for the body size measurements we are interested in. With this preliminary analysis, we are able to proceed to create graphs that show the general distribution of body mass for each species separated by sex. This box plot showed that Adelie and Chinstrap penguins tend to have similar body masses; however, Chinstrap females tend to have higher body mass then Adelie females. The last two figures are scatter plots that are split between gender and species to show relationships between flipper length and body mass, then bill length and body mass. These scatter plots both show that generally there is a positive correlation between flipper length and bill length with body mass. In addition to data visualizations, the correlation values were calculated. There is a positive and moderately strong positive correlation between bill length and body mass for the Adelie and chinstrap species. When separating by sex, females have a positive correlation between bill length and body mass, while males have a weak negative correlation. For flipper length and body mass, splitting by species shows a moderately strong positive correlation for both species, while splitting by species shows a positive correlation (although less strong) for both genders. 
+
+::: callout-note
+Correlation does not indicate causation.
+:::
+
+[![Penguins](penguin.jpg)](https://www.kaggle.com/code/sunaysawant/penguin-in-antarctica-eda)
 
 ### Functions Used
 
