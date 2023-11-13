@@ -86,6 +86,7 @@ div.csl-indent {
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
@@ -156,34 +157,64 @@ div.csl-indent {
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#about-the-data" id="toc-about-the-data" class="nav-link active" data-scroll-target="#about-the-data">About the Data</a></li>
+  <li><a href="#intended-audience" id="toc-intended-audience" class="nav-link" data-scroll-target="#intended-audience">Intended Audience</a></li>
+  <li><a href="#questions" id="toc-questions" class="nav-link" data-scroll-target="#questions">Questions</a>
+  <ul class="collapse">
+  <li><a href="#count-analysis-the-data" id="toc-count-analysis-the-data" class="nav-link" data-scroll-target="#count-analysis-the-data">Count Analysis: The Data</a></li>
+  </ul></li>
+  <li><a href="#graphical-analysis" id="toc-graphical-analysis" class="nav-link" data-scroll-target="#graphical-analysis">Graphical Analysis</a>
+  <ul class="collapse">
+  <li><a href="#species-and-sex-distribution" id="toc-species-and-sex-distribution" class="nav-link" data-scroll-target="#species-and-sex-distribution">Species and Sex Distribution</a></li>
+  <li><a href="#what-is-the-relationship-between-flipper-length-and-body-mass" id="toc-what-is-the-relationship-between-flipper-length-and-body-mass" class="nav-link" data-scroll-target="#what-is-the-relationship-between-flipper-length-and-body-mass">What is the relationship between flipper length and body mass?</a></li>
+  <li><a href="#what-is-the-relationship-between-bill-length-and-body-mass" id="toc-what-is-the-relationship-between-bill-length-and-body-mass" class="nav-link" data-scroll-target="#what-is-the-relationship-between-bill-length-and-body-mass">What is the relationship between bill length and body mass?</a></li>
+  <li><a href="#calculating-correlation-of-body-mass-and-bill-length-by-species-and-by-sex" id="toc-calculating-correlation-of-body-mass-and-bill-length-by-species-and-by-sex" class="nav-link" data-scroll-target="#calculating-correlation-of-body-mass-and-bill-length-by-species-and-by-sex">Calculating Correlation of Body Mass and Bill length, By Species, and By Sex</a></li>
+  <li><a href="#calculate-correlation-of-body-mass-and-flipper-length-by-species-and-by-sex" id="toc-calculate-correlation-of-body-mass-and-flipper-length-by-species-and-by-sex" class="nav-link" data-scroll-target="#calculate-correlation-of-body-mass-and-flipper-length-by-species-and-by-sex">Calculate Correlation of Body Mass and Flipper length, By Species, and By Sex</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#functions-used" id="toc-functions-used" class="nav-link" data-scroll-target="#functions-used">Functions Used</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<div class="quarto-about-marquee page-columns page-full">
-  <div class="about-image-container">
-    <img src="penguin.jpg" class="about-image " style="width: 10em;">
-  </div>
-  <div class="about-contents page-columns page-full">
-    <header id="title-block-header" class="quarto-title-block default">
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Example Analysis</h1>
 </div>
+
+
+
 <div class="quarto-title-meta">
+
+    
+  
+    
   </div>
-</header> <main class="content page-columns page-full" id="quarto-document-content">
+  
+
+</header>
+
 <section id="about-the-data" class="level3">
-<h3 data-anchor-id="about-the-data">About the Data</h3>
+<h3 class="anchored" data-anchor-id="about-the-data">About the Data</h3>
 <p>The peguins dataset I am using comes from the palmerpenguins package, installed from CRAN using install.packages(“palmerpenguins”). More specifically, Dr.&nbsp;Kirsten Morgan and the Palmer Station, Antarctica LTER, collected and released this data. The data collected is on three penguin species: Chinstrap, Gentoo, and Adelie. The dataset has information on the island the specific penguin is located on, specific body measurements, sex, and year <span class="citation" data-cites="Horst2020">(<a href="#ref-Horst2020" role="doc-biblioref">Horst, Hill, and Gorman 2020</a>)</span>.</p>
 <p>Data dictionary is available <a href="https://rpubs.com/rich_i/dd_pp">here</a>.</p>
 </section>
 <section id="intended-audience" class="level2">
-<h2 data-anchor-id="intended-audience">Intended Audience</h2>
+<h2 class="anchored" data-anchor-id="intended-audience">Intended Audience</h2>
 <p>The intended audience is someone who is interested in penguins potentially with a focus on penguin body size measurements. Knowing this information could lead to a better understanding of how certain body measurements of animals may impact their physical health and life expectancy. With this limited data, this is the preliminary step to more impactful research as I am analyzing trends related to penguin species, sex, and body size measurements. More information on the importance of the topic is available here <span class="citation" data-cites="Trivelpiece1987">(<a href="#ref-Trivelpiece1987" role="doc-biblioref">Trivelpiece et al. 1987</a>)</span>.</p>
 </section>
 <section id="questions" class="level2">
-<h2 data-anchor-id="questions">Questions</h2>
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
 <p>How does body mass vary between sex for the Chinstrap and Adelie species? For each of these two species and their sex, what is the relationship between bill length and body mass? What is the relationship between flipper length and body mass?</p>
 <section id="count-analysis-the-data" class="level3">
-<h3 data-anchor-id="count-analysis-the-data">Count Analysis: The Data</h3>
+<h3 class="anchored" data-anchor-id="count-analysis-the-data">Count Analysis: The Data</h3>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
@@ -211,7 +242,7 @@ div.csl-indent {
 </section>
 </section>
 <section id="graphical-analysis" class="level2 page-columns page-full">
-<h2 data-anchor-id="graphical-analysis">Graphical Analysis</h2>
+<h2 class="anchored" data-anchor-id="graphical-analysis">Graphical Analysis</h2>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><a href="https://allisonhorst.github.io/palmerpenguins/"><img src="palmpeng.jpg" class="img-fluid figure-img"></a></p>
@@ -234,20 +265,24 @@ div.csl-indent {
 </details>
 
 <div class="no-row-height column-margin column-container"><div class="cell-output-display">
-<div id="pabbtpwzdq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#pabbtpwzdq table {
+
+<div id="zrkzzmuoht" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#zrkzzmuoht table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-#pabbtpwzdq thead, #pabbtpwzdq tbody, #pabbtpwzdq tfoot, #pabbtpwzdq tr, #pabbtpwzdq td, #pabbtpwzdq th {
+
+#zrkzzmuoht thead, #zrkzzmuoht tbody, #zrkzzmuoht tfoot, #zrkzzmuoht tr, #zrkzzmuoht td, #zrkzzmuoht th {
   border-style: none;
 }
-#pabbtpwzdq p {
+
+#zrkzzmuoht p {
   margin: 0;
   padding: 0;
 }
-#pabbtpwzdq .gt_table {
+
+#zrkzzmuoht .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -272,11 +307,13 @@ div.csl-indent {
   border-left-width: 2px;
   border-left-color: #D3D3D3;
 }
-#pabbtpwzdq .gt_caption {
+
+#zrkzzmuoht .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
-#pabbtpwzdq .gt_title {
+
+#zrkzzmuoht .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -287,7 +324,8 @@ div.csl-indent {
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
-#pabbtpwzdq .gt_subtitle {
+
+#zrkzzmuoht .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -298,7 +336,8 @@ div.csl-indent {
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
-#pabbtpwzdq .gt_heading {
+
+#zrkzzmuoht .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -309,12 +348,14 @@ div.csl-indent {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-#pabbtpwzdq .gt_bottom_border {
+
+#zrkzzmuoht .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-#pabbtpwzdq .gt_col_headings {
+
+#zrkzzmuoht .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -328,7 +369,8 @@ div.csl-indent {
   border-right-width: 1px;
   border-right-color: #D3D3D3;
 }
-#pabbtpwzdq .gt_col_heading {
+
+#zrkzzmuoht .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -347,7 +389,8 @@ div.csl-indent {
   padding-right: 5px;
   overflow-x: hidden;
 }
-#pabbtpwzdq .gt_column_spanner_outer {
+
+#zrkzzmuoht .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -358,13 +401,16 @@ div.csl-indent {
   padding-left: 4px;
   padding-right: 4px;
 }
-#pabbtpwzdq .gt_column_spanner_outer:first-child {
+
+#zrkzzmuoht .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
-#pabbtpwzdq .gt_column_spanner_outer:last-child {
+
+#zrkzzmuoht .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
-#pabbtpwzdq .gt_column_spanner {
+
+#zrkzzmuoht .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -375,10 +421,12 @@ div.csl-indent {
   display: inline-block;
   width: 100%;
 }
-#pabbtpwzdq .gt_spanner_row {
+
+#zrkzzmuoht .gt_spanner_row {
   border-bottom-style: hidden;
 }
-#pabbtpwzdq .gt_group_heading {
+
+#zrkzzmuoht .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -403,7 +451,8 @@ div.csl-indent {
   vertical-align: middle;
   text-align: left;
 }
-#pabbtpwzdq .gt_empty_group_heading {
+
+#zrkzzmuoht .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -417,13 +466,16 @@ div.csl-indent {
   border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
-#pabbtpwzdq .gt_from_md > :first-child {
+
+#zrkzzmuoht .gt_from_md > :first-child {
   margin-top: 0;
 }
-#pabbtpwzdq .gt_from_md > :last-child {
+
+#zrkzzmuoht .gt_from_md > :last-child {
   margin-bottom: 0;
 }
-#pabbtpwzdq .gt_row {
+
+#zrkzzmuoht .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -441,7 +493,8 @@ div.csl-indent {
   vertical-align: middle;
   overflow-x: hidden;
 }
-#pabbtpwzdq .gt_stub {
+
+#zrkzzmuoht .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -453,7 +506,8 @@ div.csl-indent {
   padding-left: 5px;
   padding-right: 5px;
 }
-#pabbtpwzdq .gt_stub_row_group {
+
+#zrkzzmuoht .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -466,13 +520,16 @@ div.csl-indent {
   padding-right: 5px;
   vertical-align: top;
 }
-#pabbtpwzdq .gt_row_group_first td {
+
+#zrkzzmuoht .gt_row_group_first td {
   border-top-width: 2px;
 }
-#pabbtpwzdq .gt_row_group_first th {
+
+#zrkzzmuoht .gt_row_group_first th {
   border-top-width: 2px;
 }
-#pabbtpwzdq .gt_summary_row {
+
+#zrkzzmuoht .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -481,14 +538,17 @@ div.csl-indent {
   padding-left: 5px;
   padding-right: 5px;
 }
-#pabbtpwzdq .gt_first_summary_row {
+
+#zrkzzmuoht .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
-#pabbtpwzdq .gt_first_summary_row.thick {
+
+#zrkzzmuoht .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
-#pabbtpwzdq .gt_last_summary_row {
+
+#zrkzzmuoht .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -497,7 +557,8 @@ div.csl-indent {
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-#pabbtpwzdq .gt_grand_summary_row {
+
+#zrkzzmuoht .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -506,7 +567,8 @@ div.csl-indent {
   padding-left: 5px;
   padding-right: 5px;
 }
-#pabbtpwzdq .gt_first_grand_summary_row {
+
+#zrkzzmuoht .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -515,7 +577,8 @@ div.csl-indent {
   border-top-width: 6px;
   border-top-color: #D3D3D3;
 }
-#pabbtpwzdq .gt_last_grand_summary_row_top {
+
+#zrkzzmuoht .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -524,10 +587,12 @@ div.csl-indent {
   border-bottom-width: 6px;
   border-bottom-color: #D3D3D3;
 }
-#pabbtpwzdq .gt_striped {
+
+#zrkzzmuoht .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
-#pabbtpwzdq .gt_table_body {
+
+#zrkzzmuoht .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -535,7 +600,8 @@ div.csl-indent {
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
-#pabbtpwzdq .gt_footnotes {
+
+#zrkzzmuoht .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -548,7 +614,8 @@ div.csl-indent {
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-#pabbtpwzdq .gt_footnote {
+
+#zrkzzmuoht .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -556,7 +623,8 @@ div.csl-indent {
   padding-left: 5px;
   padding-right: 5px;
 }
-#pabbtpwzdq .gt_sourcenotes {
+
+#zrkzzmuoht .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -569,62 +637,78 @@ div.csl-indent {
   border-right-width: 2px;
   border-right-color: #D3D3D3;
 }
-#pabbtpwzdq .gt_sourcenote {
+
+#zrkzzmuoht .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
   padding-left: 5px;
   padding-right: 5px;
 }
-#pabbtpwzdq .gt_left {
+
+#zrkzzmuoht .gt_left {
   text-align: left;
 }
-#pabbtpwzdq .gt_center {
+
+#zrkzzmuoht .gt_center {
   text-align: center;
 }
-#pabbtpwzdq .gt_right {
+
+#zrkzzmuoht .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
-#pabbtpwzdq .gt_font_normal {
+
+#zrkzzmuoht .gt_font_normal {
   font-weight: normal;
 }
-#pabbtpwzdq .gt_font_bold {
+
+#zrkzzmuoht .gt_font_bold {
   font-weight: bold;
 }
-#pabbtpwzdq .gt_font_italic {
+
+#zrkzzmuoht .gt_font_italic {
   font-style: italic;
 }
-#pabbtpwzdq .gt_super {
+
+#zrkzzmuoht .gt_super {
   font-size: 65%;
 }
-#pabbtpwzdq .gt_footnote_marks {
+
+#zrkzzmuoht .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
-#pabbtpwzdq .gt_asterisk {
+
+#zrkzzmuoht .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
-#pabbtpwzdq .gt_indent_1 {
+
+#zrkzzmuoht .gt_indent_1 {
   text-indent: 5px;
 }
-#pabbtpwzdq .gt_indent_2 {
+
+#zrkzzmuoht .gt_indent_2 {
   text-indent: 10px;
 }
-#pabbtpwzdq .gt_indent_3 {
+
+#zrkzzmuoht .gt_indent_3 {
   text-indent: 15px;
 }
-#pabbtpwzdq .gt_indent_4 {
+
+#zrkzzmuoht .gt_indent_4 {
   text-indent: 20px;
 }
-#pabbtpwzdq .gt_indent_5 {
+
+#zrkzzmuoht .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
 <table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
   <thead>
+    
     <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="<strong>Characteristic</strong>"><strong>Characteristic</strong></th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="<strong>Adelie</strong>, N = 146<span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;><sup>1</sup></span>"><strong>Adelie</strong>, N = 146<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
@@ -658,6 +742,7 @@ div.csl-indent {
 <td headers="stat_2" class="gt_row gt_center">196</td>
 <td headers="stat_3" class="gt_row gt_center">NA</td></tr>
   </tbody>
+  
   <tfoot class="gt_footnotes">
     <tr>
       <td class="gt_footnote" colspan="4"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> n; Mean</td>
@@ -667,7 +752,7 @@ div.csl-indent {
 </div>
 </div></div></div>
 <section id="species-and-sex-distribution" class="level3">
-<h3 data-anchor-id="species-and-sex-distribution">Species and Sex Distribution</h3>
+<h3 class="anchored" data-anchor-id="species-and-sex-distribution">Species and Sex Distribution</h3>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
@@ -682,7 +767,7 @@ div.csl-indent {
 <span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-1" class="quarto-figure quarto-figure-center">
+<div id="fig-1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="analysis_files/figure-html/fig-1-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption class="figure-caption">Figure&nbsp;1: Count of species by sex</figcaption>
@@ -716,7 +801,7 @@ div.csl-indent {
 <span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-2" class="quarto-figure quarto-figure-center">
+<div id="fig-2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="analysis_files/figure-html/fig-2-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption class="figure-caption">Figure&nbsp;2: Boxplot: Body Mass variation by species and sex</figcaption>
@@ -726,7 +811,7 @@ div.csl-indent {
 </div>
 </section>
 <section id="what-is-the-relationship-between-flipper-length-and-body-mass" class="level3">
-<h3 data-anchor-id="what-is-the-relationship-between-flipper-length-and-body-mass">What is the relationship between flipper length and body mass?</h3>
+<h3 class="anchored" data-anchor-id="what-is-the-relationship-between-flipper-length-and-body-mass">What is the relationship between flipper length and body mass?</h3>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
@@ -744,7 +829,7 @@ div.csl-indent {
 <span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-3" class="quarto-figure quarto-figure-center">
+<div id="fig-3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="analysis_files/figure-html/fig-3-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption class="figure-caption">Figure&nbsp;3: Scatterplot: Flipper Length and Body Mass</figcaption>
@@ -754,7 +839,7 @@ div.csl-indent {
 </div>
 </section>
 <section id="what-is-the-relationship-between-bill-length-and-body-mass" class="level3">
-<h3 data-anchor-id="what-is-the-relationship-between-bill-length-and-body-mass">What is the relationship between bill length and body mass?</h3>
+<h3 class="anchored" data-anchor-id="what-is-the-relationship-between-bill-length-and-body-mass">What is the relationship between bill length and body mass?</h3>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
@@ -767,12 +852,12 @@ div.csl-indent {
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Bill Length (mm)"</span>,</span>
 <span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Body Mass (g)"</span>,</span>
 <span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"As bill length increases, body mass increases"</span>,</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"weaker correlation compared to flipper length with body mass"</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"positive linear relationship"</span></span>
 <span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
 <span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
-<div id="fig-4" class="quarto-figure quarto-figure-center">
+<div id="fig-4" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="analysis_files/figure-html/fig-4-1.png" class="img-fluid figure-img" width="672"></p>
 <figcaption class="figure-caption">Figure&nbsp;4: Scatterplot: Bill Length and Body Mass</figcaption>
@@ -792,7 +877,7 @@ div.csl-indent {
 </div>
 </section>
 <section id="calculating-correlation-of-body-mass-and-bill-length-by-species-and-by-sex" class="level3">
-<h3 data-anchor-id="calculating-correlation-of-body-mass-and-bill-length-by-species-and-by-sex">Calculating Correlation of Body Mass and Bill length, By Species, and By Sex</h3>
+<h3 class="anchored" data-anchor-id="calculating-correlation-of-body-mass-and-bill-length-by-species-and-by-sex">Calculating Correlation of Body Mass and Bill length, By Species, and By Sex</h3>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
@@ -830,7 +915,7 @@ penguins_filtered$sex: male
 </div>
 </section>
 <section id="calculate-correlation-of-body-mass-and-flipper-length-by-species-and-by-sex" class="level3">
-<h3 data-anchor-id="calculate-correlation-of-body-mass-and-flipper-length-by-species-and-by-sex">Calculate Correlation of Body Mass and Flipper length, By Species, and By Sex</h3>
+<h3 class="anchored" data-anchor-id="calculate-correlation-of-body-mass-and-flipper-length-by-species-and-by-sex">Calculate Correlation of Body Mass and Flipper length, By Species, and By Sex</h3>
 <div class="cell">
 <details>
 <summary>Show the code</summary>
@@ -868,11 +953,27 @@ penguins_filtered$sex: male
 </div>
 </section>
 <section id="summary" class="level3">
-<h3 data-anchor-id="summary">Summary</h3>
+<h3 class="anchored" data-anchor-id="summary">Summary</h3>
 <p>Looking at the tables and figures provides a visual way of understanding and answering the questions. The first table summary and figure provide general information on the counts of each species and the averages, by species, for the body size measurements we are interested in. With this preliminary analysis, we are able to proceed to create graphs that show the general distribution of body mass for each species separated by sex. This box plot showed that Adelie and Chinstrap penguins tend to have similar body masses; however, Chinstrap females tend to have higher body mass then Adelie females. The last two figures are scatter plots that are split between gender and species to show relationships between flipper length and body mass, then bill length and body mass. These scatter plots both show that generally there is a positive correlation between flipper length and bill length with body mass. In addition to data visualizations, the correlation values were calculated. There is a positive and moderately strong positive correlation between bill length and body mass for the Adelie and chinstrap species. When separating by sex, females have a positive correlation between bill length and body mass, while males have a weak negative correlation. For flipper length and body mass, splitting by species shows a moderately strong positive correlation for both species, while splitting by species shows a positive correlation (although less strong) for both genders.</p>
+<div class="callout callout-style-simple callout-note">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Correlation does not indicate causation.</p>
+</div>
+</div>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://www.kaggle.com/code/sunaysawant/penguin-in-antarctica-eda"><img src="penguin.jpg" class="img-fluid figure-img"></a></p>
+<figcaption class="figure-caption">Penguins</figcaption>
+</figure>
+</div>
 </section>
 <section id="functions-used" class="level3">
-<h3 data-anchor-id="functions-used">Functions Used</h3>
+<h3 class="anchored" data-anchor-id="functions-used">Functions Used</h3>
 <p>dplyr: group_by, filter, select, n(), summarise</p>
 <p>tidyr: %&gt;%</p>
 <p>ggplot: geom_bar, geom_boxplot, geom_point, geom_smooth, facet_grid</p>
@@ -884,6 +985,7 @@ penguins_filtered$sex: male
 
 </section>
 </section>
+
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-GrolemundWickham2017" class="csl-entry" role="listitem">
 Grolemund, Garrett, and Hadley Wickham. 2017. <em>R for Data Science</em>. O’Reilly Media.
@@ -894,10 +996,7 @@ Horst, Allison M, Alex P Hill, and Kristen B Gorman. 2020. <span>“Palmerpengui
 <div id="ref-Trivelpiece1987" class="csl-entry" role="listitem">
 Trivelpiece, Wayne Z. et al. 1987. <span>“Ecological Segregation of Adelie, Gentoo, and Chinstrap Penguins at King George Island, Antarctica.”</span> <em>Ecology</em> 68 (2): 351–61. <a href="https://doi.org/10.2307/1939266">https://doi.org/10.2307/1939266</a>.
 </div>
-</div></section></div></main> 
-  </div>
-</div>
- <!-- /main -->
+</div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -918,6 +1017,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
   const isCodeAnnotation = (el) => {
     for (const clz of el.classList) {
       if (clz.startsWith('code-annotation-')) {                     
